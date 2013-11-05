@@ -263,6 +263,7 @@
 				352BB27018286B4700EAA412 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

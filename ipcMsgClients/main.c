@@ -22,7 +22,6 @@ void treatSigint() {
 int main(int argc, const char * argv[])
 {
     int pid, i;
-    message message;
     struct sigaction action;
     signal(SIGCHLD, SIG_IGN);
     
@@ -33,23 +32,25 @@ int main(int argc, const char * argv[])
             break;
         }
     }
+    
     if (i == 8) {
         setup(i);
     }
-    
     action.sa_handler = treatSigint;
     sigaction(SIGINT, &action, NULL);
     
-    message.destination = 0;
-    message.source = i;
-    message.mtype = 1;
-    strcpy(message.text, "Brubles!");
-    sendMessage(&message);
+    message* message = malloc(sizeof(message));
+    
+    message->mdata.destination = 0;
+    message->mdata.source = i;
+    message->mtype = 1;
+    strcpy(message->mdata.text, "Brubles!");
+    sendMessage(message);
+    free(message);
     
     printf("Node %d reporting!\n", i);
-    for (i = 0; i<10; i++) {
-        sleep(10);
-    }
+    
+    watchdog();
     
     tearDown();
     
