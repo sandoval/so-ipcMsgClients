@@ -9,7 +9,18 @@
 /* Begin PBXBuildFile section */
 		352BB26918286B4700EAA412 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 352BB26818286B4700EAA412 /* main.c */; };
 		352BB26B18286B4700EAA412 /* ipcMsgClients.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 352BB26A18286B4700EAA412 /* ipcMsgClients.1 */; };
+		352BB28418286CE900EAA412 /* libipcMsgLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 352BB28318286CDB00EAA412 /* libipcMsgLib.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		352BB28218286CDB00EAA412 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 352BB27E18286CDB00EAA412 /* ipcMessaging.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 352BB25818286A1900EAA412;
+			remoteInfo = ipcMsgLib;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		352BB26318286B4700EAA412 /* CopyFiles */ = {
@@ -28,6 +39,7 @@
 		352BB26518286B4700EAA412 /* ipcMsgClients */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ipcMsgClients; sourceTree = BUILT_PRODUCTS_DIR; };
 		352BB26818286B4700EAA412 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		352BB26A18286B4700EAA412 /* ipcMsgClients.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ipcMsgClients.1; sourceTree = "<group>"; };
+		352BB27E18286CDB00EAA412 /* ipcMessaging.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ipcMessaging.xcodeproj; path = ../ipcMessaging/ipcMessaging.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352BB28418286CE900EAA412 /* libipcMsgLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +57,7 @@
 		352BB25C18286B4700EAA412 = {
 			isa = PBXGroup;
 			children = (
+				352BB27E18286CDB00EAA412 /* ipcMessaging.xcodeproj */,
 				352BB26718286B4700EAA412 /* ipcMsgClients */,
 				352BB26618286B4700EAA412 /* Products */,
 			);
@@ -64,6 +78,14 @@
 				352BB26A18286B4700EAA412 /* ipcMsgClients.1 */,
 			);
 			path = ipcMsgClients;
+			sourceTree = "<group>";
+		};
+		352BB27F18286CDB00EAA412 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				352BB28318286CDB00EAA412 /* libipcMsgLib.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,12 +127,28 @@
 			mainGroup = 352BB25C18286B4700EAA412;
 			productRefGroup = 352BB26618286B4700EAA412 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 352BB27F18286CDB00EAA412 /* Products */;
+					ProjectRef = 352BB27E18286CDB00EAA412 /* ipcMessaging.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				352BB26418286B4700EAA412 /* ipcMsgClients */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		352BB28318286CDB00EAA412 /* libipcMsgLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libipcMsgLib.a;
+			remoteRef = 352BB28218286CDB00EAA412 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		352BB26118286B4700EAA412 /* Sources */ = {
