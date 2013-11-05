@@ -19,6 +19,10 @@ void treatSigint() {
     exit(1);
 }
 
+void receiveMessage(message* msg) {
+    printf("Message %ld received from %d\n", msg->mdata.messageId, msg->mdata.source);
+}
+
 int main(int argc, const char * argv[])
 {
     int pid, i;
@@ -50,7 +54,7 @@ int main(int argc, const char * argv[])
     
     printf("Node %d reporting!\n", i);
     
-    watchdog();
+    listenForMessages(0, receiveMessage);
     
     tearDown();
     
