@@ -2,7 +2,7 @@
 //  main.c
 //  ipcMsgClients
 //
-//  Created by Daniel Sandoval on 04/11/2013.
+//  Created by Daniel Sandoval (09/0109899) and Pedro Salum (09/0139232) on 04/11/2013.
 //  Copyright (c) 2013 Departamento de Ciência da Computação - Universidade de Brasília. All rights reserved.
 //
 
@@ -20,13 +20,15 @@ void treatSigint() {
     exit(1);
 }
 
+int nodeId;
+
 void receiveMessage(message* msg) {
     if (msg->mtype == 1) {
         if (msg->mdata.text[0] == 'y') {
             //Client managed to connect to the pool.
             message printMsg;
             //Set message we want to print.
-            strcpy(printMsg.mdata.text, "Please print this message!\n");
+            sprintf(printMsg.mdata.text, "Please print this message from node %d!\n", nodeId);
             //Set printer as destination.
             printMsg.mdata.destination = INT_MAX;
             //Set print message type (3)
@@ -69,12 +71,14 @@ int main(int argc, const char * argv[])
         pid = fork();
         if (pid == 0) {
             setup(i);
+            nodeId = i;
             break;
         }
     }
     
     if (i == 8) {
         setup(i);
+        nodeId = i;
     }
     action.sa_handler = treatSigint;
     sigaction(SIGINT, &action, NULL);
@@ -88,8 +92,6 @@ int main(int argc, const char * argv[])
     
     sendMessage(msg);
     free(msg);
-    
-    printf("Node %d reporting!\n", i);
     
     listenForMessages(0, receiveMessage);
     
